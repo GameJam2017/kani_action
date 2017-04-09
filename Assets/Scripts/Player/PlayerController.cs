@@ -44,4 +44,13 @@ public class PlayerController : MonoBehaviour {
         // positionに代入
         transform.position = Position;
     }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "MoveArea")
+        {
+            Debug.Log("移動制限");
+            Destroy(gameObject);
+        }
+    }
 }
