@@ -16,9 +16,9 @@ public class LeftButton : MonoBehaviour {
         {
             Vector3 Qpos = player.transform.localPosition;
             Qpos.x += (speed* -1 * Time.deltaTime);
-            if (Qpos.x < -5.0f)
+            if (Qpos.x < -5.3f)
             {
-                Qpos.x = -5.0f;
+                Qpos.x = -5.3f;
             }
             player.transform.localPosition = Qpos;
         }
