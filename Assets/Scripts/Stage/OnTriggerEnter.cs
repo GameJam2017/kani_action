@@ -2,29 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnTriggerEnter : MonoBehaviour {
+public class OnTriggerEnter : MonoBehaviour
+{
+
+    GameObject floor;
+    Vector3 floorSize;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+        //床の情報を入手
+        floor = GameObject.FindGameObjectWithTag("floor");
+        floorSize = floor.gameObject.transform.localScale;
+
+        //床を縦方向に大きくする
+        floorSize.y = floorSize.y * 3;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-            if (collision.gameObject.tag == "item")
-            {
-                Destroy(gameObject);
-                Debug.Log("Hititem");
-            }
-
-            if(collision.gameObject.tag == "virus")
+        //当たったのがアイテムだったら
+        if (collision.gameObject.tag == "Item")
         {
-           
+            Destroy(gameObject);
+            Debug.Log("Hititem");
+        }
+
+        //当たったのがウイルスだったら
+        if(collision.gameObject.tag == "virus")
+        {
+            //床を大きくする
+            floor.gameObject.transform.localScale = floorSize;
+            floorSize.y = floorSize.y / 3;
+
+            Destroy(collision.gameObject);
         }
     }
 }
