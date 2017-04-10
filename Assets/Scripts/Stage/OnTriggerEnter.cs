@@ -32,11 +32,12 @@ public class OnTriggerEnter : MonoBehaviour
         //当たったのがアイテムだったら
         if (collision.gameObject.tag == "Item")
         {
-            gameObject.SetActive(false);
-            //Destroy(gameObject);
-            Debug.Log("Hititem");
-            Debug.Log("GaugeUp");
+            GameObject.Destroy(gameObject);
+            //gameObject.Equals(null);
 
+            Debug.Log("Hititem");
+            Debug.Log("SetActive: true -> false");
+            Debug.Log("GaugeUp");
         }
 
         //当たったのがウイルスだったら
