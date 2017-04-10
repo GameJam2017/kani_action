@@ -2,68 +2,71 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// 敵
-public class Enemy : Token
+public class Enemy : MonoBehaviour
 {
-    int movetime = 0;
+    // 速度
 
-    /// 開始
+    public Vector2 speed = new Vector2(0.05f, 0.05f);
+
+    // ターゲットとなるオブジェクト
+
+    public GameObject targetObject;
+
+    // ラジアン変数
+
+    private float rad;
+
+    // 現在位置を代入する為の変数
+
+    private Vector2 Position;
+
+    // Use this for initialization
+
     void Start()
     {
-        // ランダムな方向に移動する
-        int dir = 0;
 
-        // 速さは2
-        float spd = 5;
-        switch(Random.Range(0, 3))
-        {
-            case 0:
-                // 方向をランダムに決める
-                dir = Random.Range(20, 70);
-                break;
-            case 1:
-                // 方向をランダムに決める
-                dir = Random.Range(110, 160);
-                break;
-            case 2:
-                // 方向をランダムに決める
-                dir = Random.Range(200, 250);
-                break;
-            case 3:
-                // 方向をランダムに決める
-                dir = Random.Range(290, 340);
-                break;
+        // ラジアン
 
-        }
-        SetVelocity(dir, spd);
+        // atan2(目標方向のy座標 - 初期位置のy座標, 目標方向のx座標 - 初期位置のx座標)
+
+        // これでラジアンが出る。
+
+        // このラジアンをCosやSinに使い、特定の方向へ進むことが出来る。
+
+        rad = Mathf.Atan2(
+
+            targetObject.transform.position.y - transform.position.y,
+            targetObject.transform.position.x - transform.position.x);
+
     }
+
+
+
+    // Update is called once per frame
+
     void Update()
     {
-        // カメラの左下座標を取得
-        Vector2 min = GetWorldMin();
-        // カメラの右上座標を取得する
-        Vector2 max = GetWorldMax();
 
-        movetime++;
-        
-        if (X - SpriteWidth / 2 < min.x || max.x < X + SpriteWidth / 2)
-        {
-            // 画面外に出たので、X移動量を反転する
-            VX *= -1;
-            // 画面内に移動する
-            ClampScreen();
-        }
-        if (movetime >= 120)
-        {
-            if (Y - SpriteHeight / 2 < min.y + 1 || max.y < Y + SpriteHeight / 2)
-            {
-                // 画面外に出たので、Y移動量を反転する
-                VY *= -1;
-                // 画面内に移動する
-                ClampScreen();
-            }
+        // 現在位置をPositionに代入
 
-        }
+        Position = transform.position;
+
+        // x += SPEED * cos(ラジアン)
+
+        // y += SPEED * sin(ラジアン)
+
+        // これで特定の方向へ向かって進んでいく。
+
+        Position.x += speed.x * Mathf.Cos(rad);
+
+        Position.y += speed.y * Mathf.Sin(rad);
+
+        // 現在の位置に加算減算を行ったPositionを代入する
+
+        transform.position = Position;
+
 
     }
+
 }
+
