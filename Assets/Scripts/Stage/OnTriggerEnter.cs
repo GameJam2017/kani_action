@@ -35,9 +35,9 @@ public class OnTriggerEnter : MonoBehaviour
             GameObject.Destroy(gameObject);
             //gameObject.Equals(null);
 
-            Debug.Log("Hititem");
-            Debug.Log("SetActive: true -> false");
-            Debug.Log("GaugeUp");
+            //Debug.Log("Hititem");
+            //Debug.Log("SetActive: true -> false");
+            //Debug.Log("GaugeUp");
         }
 
         //当たったのがウイルスだったら
@@ -47,8 +47,8 @@ public class OnTriggerEnter : MonoBehaviour
             floor.gameObject.transform.localScale = floorSize;
             floorSize.y = floorSize.y / 3;
 
-            Debug.Log("HitEnemy");
-            Debug.Log("GuageDown");
+            //Debug.Log("HitEnemy");
+            //Debug.Log("GuageDown");
             Destroy(collision.gameObject);
         }
     }

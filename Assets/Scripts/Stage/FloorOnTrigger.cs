@@ -29,8 +29,8 @@ public class FloorOnTrigger : MonoBehaviour {
             gameObject.transform.localScale = scale;
           
             //デバッグログの表示
-            Debug.Log("virusHit");
-            Debug.Log("GaugeDown");
+            //Debug.Log("virusHit");
+            //Debug.Log("GaugeDown");
         }
 
         //gameObject.transform.localScale = scale2;
