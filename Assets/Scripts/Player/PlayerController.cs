@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
     // オブジェクトに当たっているか
     public bool objHit = false;
 
+    public GameObject _nowHitObj = null;
+
     // オブジェクトを持っているか
     public bool _bringFlg = false;
 
@@ -18,9 +20,11 @@ public class PlayerController : MonoBehaviour {
     // 子オブジェクトの保持
     public GameObject _childObj = null;
 
-	// Use this for initialization
-	void Start () {
-		
+    public bool _isFit = false;
+
+
+    // Use this for initialization
+    void Start () {
 	}
 	
 	// Update is called once per frame
@@ -74,7 +78,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     // 現在オブジェクトに当たっているかを返す
-    public bool GetHitObj()
+    public bool IsHitObj()
     {
         return objHit;
     }
@@ -88,8 +92,20 @@ public class PlayerController : MonoBehaviour {
             {
                 _childObj = collision.gameObject;
 
-                _childObj.transform.parent = this.transform;
+                _childObj.transform.parent = transform;
             }
         }
+
+        if (collision.gameObject.name == "Target")
+        {
+            _isFit = true;
+        }
     }
+
+    
+
+    //public GameObject GetChild()
+    //{
+    //    return _childObj;
+    //}
 }

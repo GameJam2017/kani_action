@@ -24,7 +24,7 @@ public class InterposeButton : MonoBehaviour {
     {
         //Qpos = _player.transform.localPosition;
 
-        hit = _playerScript.GetHitObj();
+        hit = _playerScript.IsHitObj();
     }
 
     void Update()
@@ -33,7 +33,7 @@ public class InterposeButton : MonoBehaviour {
 
     public void OnClick()
     {
-        hit = _playerScript.GetHitObj();
+        hit = _playerScript.IsHitObj();
 
         if (hit == true && _playerScript._bringFlg == false)
         {
