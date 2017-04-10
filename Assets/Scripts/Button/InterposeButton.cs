@@ -18,43 +18,47 @@ public class InterposeButton : MonoBehaviour {
     //[SerializeField]
     //public Vector3 Qpos;
 
-    private bool hit = false;
+    private bool _hit = false;
 
     void Start()
     {
         //Qpos = _player.transform.localPosition;
 
-        hit = _playerScript.IsHitObj();
+        //hit = _playerScript.IsHitObj();
     }
 
-    void Update()
-    {
-    }
-
+    // クリックされたら
     public void OnClick()
     {
-        hit = _playerScript.IsHitObj();
+        // プレイヤーがウイルスまたはアイテムにあたっているかを取得
+        _hit = _playerScript.IsHitObj();
 
-        if (hit == true && _playerScript._bringFlg == false)
+        // 何かを持っていてかつ、持つことが可能なオブジェクトに当たっている場合
+        if (_hit == true && _playerScript._bringFlg == false)
         {
             Debug.Log("bring!");
 
             // 持ったオブジェクトを取得
             _bringObj = _playerScript._childObj;
 
+            // プレイヤーの変数に持っているという情報を渡す
             _playerScript._bringFlg = true;
 
-            hit = false;
+            // 当たっているという判定を打ち消す
+            _hit = false;
 
             return;
         }
 
+        // プレイヤーが何かを持っている時にボタンが押された場合
         if (_playerScript._bringFlg == true)
         {
             Debug.Log("cut!");
 
+            // 持っているオブジェ宇都を消滅
             Destroy(_playerScript._childObj);
 
+            // プレイヤーをアイテム未所持に
             _playerScript._bringFlg = false;
 
             return;

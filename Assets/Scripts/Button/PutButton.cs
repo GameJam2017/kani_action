@@ -13,6 +13,7 @@ public class PutButton : MonoBehaviour {
 
     public void OnClick()
     {
+        // 治療ポイントではないなら
         if (_playerScript._isFit == false)
         {
             // プレイヤーは何か持ってるならその場で離す

@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
         Move();
 	}
 
-    // 移動関数
+    // 移動関数(キーボードデバッグ用)
     void Move()
     {
         Vector2 Position = transform.position;
@@ -64,45 +64,58 @@ public class PlayerController : MonoBehaviour {
     // 治療ポイント
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.name == "Point")
+        // 治療ポイント以外に当たっていたら
+        if(collision.gameObject.tag != "Treatment")
         {
+            // 当たっている状態に
             Debug.Log("true");
+
             objHit = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("false");
+        // 治療ポイント以外から外れたら
+        if (collision.gameObject.tag != "Treatment")
+        {
+            // 当たっていない状態に
+            Debug.Log("false");
 
-        objHit = false;
+            objHit = false;
+        }
     }
 
-    // 現在オブジェクトに当たっているかを返す
+    // 現在治療ポイント以外のオブジェクトに当たっているかを返す
     public bool IsHitObj()
     {
         return objHit;
     }
 
+    // コライダーに当たっている間
     private void OnTriggerStay2D(Collider2D collision)
     {
+        // プレイヤーが所持状態であるなら
         if (_bringFlg == true)
         {
             // 親子一緒に移動
-            if (collision.gameObject.name == "Point")
+            // 道具orウィルス
+            if (collision.gameObject.tag == "Item" || collision.gameObject.tag == "virus")
             {
+                // 親と一緒に座標を移動
                 _childObj = collision.gameObject;
 
                 _childObj.transform.parent = transform;
             }
         }
 
-        if (collision.gameObject.name == "Target")
+        if (collision.gameObject.tag == "Treatment")
         {
+            Debug.Log("ok");
+
+            // 治療することができる状態に
             _isFit = true;
         }
     }
-
-    
 
     //public GameObject GetChild()
     //{
