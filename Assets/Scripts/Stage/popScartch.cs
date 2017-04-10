@@ -20,11 +20,18 @@ public class popScartch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameObject.FindGameObjectWithTag("scratch") == null)
+        if(GameObject.FindGameObjectsWithTag("Treatment")== null)
         {
-            //scratch = GameObject.FindGameObjectWithTag("scratch");
+            //scratch = GameObject.FindGameObjectWithTag("Treatment");
 
             Instantiate(scratch);
+
+            //if (scratch != null)
+            //{
+            //    Debug.Log("ないよ");
+            //}
+
+            //Instantiate(Resources.Load("Prefab") as GameObject);
 
             //乱数の生成
             int rand = Random.Range(1, 4);
@@ -38,13 +45,13 @@ public class popScartch : MonoBehaviour
                     break;
 
                 case 2:
-                    scratch.transform.position = new Vector3(3, 3, 3);
+                    //scratch.transform.position = new Vector3(3, 3, 3);
                     scratch.transform.position = pos[1];
 
                     break;
 
                 case 3:
-                    scratch.transform.position = new Vector3(5, 5, 5);
+                    //scratch.transform.position = new Vector3(5, 5, 5);
                     scratch.transform.position = pos[2];
 
                     break;

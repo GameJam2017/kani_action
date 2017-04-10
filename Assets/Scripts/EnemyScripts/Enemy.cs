@@ -68,5 +68,10 @@ public class Enemy : MonoBehaviour
 
     }
 
+    // 現在の敵を取得
+    public GameObject GetEnemy()
+    {
+        return this.gameObject;
+    }
 }
 

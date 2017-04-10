@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour {
     // オブジェクトを持っているか
     public bool _bringFlg = false;
 
+    public Enemy _enemy;
+
+    private GameObject _nowEnemy;
+
     public GameObject _interposeBtn;
 
     // 子オブジェクトの保持
@@ -99,8 +103,13 @@ public class PlayerController : MonoBehaviour {
         {
             // 親子一緒に移動
             // 道具orウィルス
-            if (collision.gameObject.tag == "Item" || collision.gameObject.tag == "virus")
+            if (collision.gameObject.tag == "Item" || collision.gameObject.tag == "Enemy")
             {
+                if (collision.gameObject.tag == "Enemy")
+                {
+                    //_enemy.GetEnemy().
+                }
+
                 // 親と一緒に座標を移動
                 _childObj = collision.gameObject;
 

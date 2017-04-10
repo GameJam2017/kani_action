@@ -51,4 +51,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4fe34819d3988948810d38b6f76a5bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scratch: {fileID: 1244312865589722, guid: da3295f4af133044285dc416b307bf2f, type: 2}
+  scratch: {fileID: 0}
