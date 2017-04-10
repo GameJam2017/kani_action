@@ -30,4 +30,30 @@ public class scoreCtrl : MonoBehaviour
         //int型をstring型に変換して表示
         GetComponent<Text>().text = (TotalScore).ToString();
     }
+
+    //エネミーとキズが当たったときに呼び出される
+    void onEnemy()
+    {
+        //minより大きければ
+        if (TotalScore > 0)
+        {
+            TotalScore -= MinusScore;
+        }
+        else
+        {
+            TotalScore = 0;
+        }
+
+        //int型をstring型に変換して表示
+        GetComponent<Text>().text = (TotalScore).ToString();
+    }
+
+    //エネミーとキズが当たったときに呼び出される
+    void onItem()
+    {
+        TotalScore += PlusScore;
+        //int型をstring型に変換して表示
+        GetComponent<Text>().text = (TotalScore).ToString();
+
+    }
 }
