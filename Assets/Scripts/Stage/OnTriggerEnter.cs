@@ -8,6 +8,8 @@ public class OnTriggerEnter : MonoBehaviour
     GameObject floor;
     Vector3 floorSize;
 
+    GameObject gauge;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -25,22 +27,27 @@ public class OnTriggerEnter : MonoBehaviour
 		
 	}
 
-    void OnTriggerEnter2D(Collider2D collision)
+   public  void OnTriggerEnter2D(Collider2D collision)
     {
         //当たったのがアイテムだったら
         if (collision.gameObject.tag == "Item")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
             Debug.Log("Hititem");
+            Debug.Log("GaugeUp");
+
         }
 
         //当たったのがウイルスだったら
-        if(collision.gameObject.tag == "virus")
+        if(collision.gameObject.tag == "Enemy")
         {
             //床を大きくする
             floor.gameObject.transform.localScale = floorSize;
             floorSize.y = floorSize.y / 3;
 
+            Debug.Log("HitEnemy");
+            Debug.Log("GuageDown");
             Destroy(collision.gameObject);
         }
     }
