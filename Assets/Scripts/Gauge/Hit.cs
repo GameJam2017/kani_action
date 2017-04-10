@@ -6,8 +6,7 @@ using UnityEngine;
 public class Hit : MonoBehaviour
 {
     public GameObject gauge;
-    public int damage = 10;
-    public int cure = 10;
+    public GameObject text;
 
     //collision同士で当たったら
     void OnCollisionEnter2D(Collision2D col)
@@ -15,13 +14,15 @@ public class Hit : MonoBehaviour
         //エネミーと当たったら
         if (col.gameObject.tag == "Enemy")
         {
-            gauge.gameObject.SendMessage("onEnemy", damage);
+            text.gameObject.SendMessage("onEnemy");
+            gauge.gameObject.SendMessage("onEnemy");
         }
 
         //アイテムと当たったら
         if (col.gameObject.tag == "Item")
         {
-            gauge.gameObject.SendMessage("onItem", cure);
+            text.gameObject.SendMessage("onItem");
+            gauge.gameObject.SendMessage("onItem");
         }
     }
 }

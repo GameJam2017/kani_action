@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class GaugeCtrl : MonoBehaviour
 {
-
+    public int up = 10;
+    public int down = 10;
     Slider _slider;
     void Start()
     {
@@ -22,12 +23,12 @@ public class GaugeCtrl : MonoBehaviour
     }
 
     //エネミーとキズが当たったときに呼び出される
-    void onEnemy(int damage)
+    void onEnemy()
     {
         //minより大きければ
-        if (_gauge - damage > _slider.minValue)
+        if (_gauge - down > _slider.minValue)
         {
-            _gauge -= damage;
+            _gauge -= down;
         }
         else
         {
@@ -38,12 +39,12 @@ public class GaugeCtrl : MonoBehaviour
     }
 
     //エネミーとキズが当たったときに呼び出される
-    void onItem(int cure)
+    void onItem()
     {
         //minより大きければ
-        if (_gauge + cure > _slider.minValue)
+        if (_gauge + up > _slider.minValue)
         {
-            _gauge += cure;
+            _gauge += up;
         }
         else
         {
