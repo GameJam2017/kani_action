@@ -25,13 +25,14 @@ public class OnTriggerEnter : MonoBehaviour
 		
 	}
 
-    void OnTriggerEnter2D(Collider2D collision)
+   public  void OnTriggerEnter2D(Collider2D collision)
     {
         //当たったのがアイテムだったら
         if (collision.gameObject.tag == "Item")
         {
             Destroy(gameObject);
             Debug.Log("Hititem");
+            Debug.Log("GaugeUp");
         }
 
         //当たったのがウイルスだったら
@@ -41,6 +42,8 @@ public class OnTriggerEnter : MonoBehaviour
             floor.gameObject.transform.localScale = floorSize;
             floorSize.y = floorSize.y / 3;
 
+            Debug.Log("HitVirus");
+            Debug.Log("GuageDown");
             Destroy(collision.gameObject);
         }
     }
