@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4617627498228772}
   - component: {fileID: 212630426479857012}
-  - component: {fileID: 114841240467877860}
   - component: {fileID: 61310503715383454}
   - component: {fileID: 50246703574581882}
+  - component: {fileID: 114841240467877860}
   m_Layer: 0
   m_Name: scratch
   m_TagString: scratch
