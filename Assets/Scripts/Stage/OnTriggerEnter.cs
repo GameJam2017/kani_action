@@ -16,7 +16,7 @@ public class OnTriggerEnter : MonoBehaviour
         floorSize = floor.gameObject.transform.localScale;
 
         //床を縦方向に大きくする
-        floorSize.y = floorSize.y * 3;
+        floorSize.y = floorSize.y * 5;
 	}
 	
 	// Update is called once per frame
