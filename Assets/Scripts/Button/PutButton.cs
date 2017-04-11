@@ -11,6 +11,11 @@ public class PutButton : MonoBehaviour {
     public GameObject _player;
 
 
+
+    void Start()
+    {
+    }
+
     public void OnClick()
     {
         // 治療ポイントではないなら

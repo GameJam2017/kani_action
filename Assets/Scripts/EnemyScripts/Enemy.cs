@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
 
     private Vector2 Position;
 
+
     // Use this for initialization
 
     void Start()
@@ -69,9 +70,14 @@ public class Enemy : MonoBehaviour
     }
 
     // 現在の敵を取得
-    public GameObject GetEnemy()
+    public Enemy GetEnemy()
     {
-        return this.gameObject;
+        return this;
+    }
+
+    public GameObject GetEnemyObj()
+    {
+        return gameObject;
     }
 }
 

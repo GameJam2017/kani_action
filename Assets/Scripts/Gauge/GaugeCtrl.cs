@@ -20,26 +20,35 @@ public class GaugeCtrl : MonoBehaviour
     {
         // HPゲージに値を設定
         _slider.value = _gauge;
+
+        onEnemy();
+
+        onItem();
     }
 
     //エネミーとキズが当たったときに呼び出される
-    void onEnemy()
+    public void onEnemy()
     {
-        //minより大きければ
-        if (_gauge - down > _slider.minValue)
+        if (Input.GetKey("left"))
         {
-            _gauge -= down;
+            Debug.Log("Left");
+
+            //minより大きければ
+            if (_gauge - down > _slider.minValue)
+            {
+                _gauge -= down;
+            }
+            else
+            {
+                _gauge = 0;
+            }
+            // HPゲージに値を設定
+            _slider.value = _gauge;
         }
-        else
-        {
-            _gauge = 0;
-        }
-        // HPゲージに値を設定
-        _slider.value = _gauge;
     }
 
     //エネミーとキズが当たったときに呼び出される
-    void onItem()
+    public void onItem()
     {
         //minより大きければ
         if (_gauge + up > _slider.minValue)

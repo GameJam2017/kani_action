@@ -10,8 +10,10 @@ public class OnTriggerEnter : MonoBehaviour
 
     GameObject gauge;
 
-	// Use this for initialization
-	void Start ()
+    public GaugeCtrl _gauge2;
+
+    // Use this for initialization
+    void Start ()
     {
         //床の情報を入手
         floor = GameObject.FindGameObjectWithTag("floor");
@@ -19,10 +21,13 @@ public class OnTriggerEnter : MonoBehaviour
 
         //床を縦方向に大きくする
         floorSize.y = floorSize.y * 5;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+
+        _gauge2 = GetComponent<GaugeCtrl>();
+
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
 		
 	}
@@ -38,10 +43,12 @@ public class OnTriggerEnter : MonoBehaviour
             //Debug.Log("Hititem");
             //Debug.Log("SetActive: true -> false");
             //Debug.Log("GaugeUp");
+            _gauge2.onItem();
+
         }
 
         //当たったのがウイルスだったら
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             //床を大きくする
             floor.gameObject.transform.localScale = floorSize;
@@ -50,6 +57,9 @@ public class OnTriggerEnter : MonoBehaviour
             //Debug.Log("HitEnemy");
             //Debug.Log("GuageDown");
             Destroy(collision.gameObject);
+
+            _gauge2.onEnemy();
+
         }
     }
 }

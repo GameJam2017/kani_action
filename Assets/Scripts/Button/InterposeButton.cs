@@ -55,7 +55,7 @@ public class InterposeButton : MonoBehaviour {
         {
             Debug.Log("cut!");
 
-            // 持っているオブジェ宇都を消滅
+            // 持っているオブジェを消滅
             Destroy(_playerScript._childObj);
 
             // プレイヤーをアイテム未所持に

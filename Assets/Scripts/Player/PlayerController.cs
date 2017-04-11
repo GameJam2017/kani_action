@@ -39,30 +39,30 @@ public class PlayerController : MonoBehaviour {
     // 移動関数(キーボードデバッグ用)
     void Move()
     {
-        Vector2 Position = transform.position;
+        //Vector2 Position = transform.position;
 
-        // 左キー
-        if(Input.GetKey("left"))
-        {
-            Position.x -= speed.x;
-        }
-        // 右キー
-        else if (Input.GetKey("right"))
-        {
-            Position.x += speed.x;
-        }
-        // 上キー
-        else if(Input.GetKey("up"))
-        {
-            Position.y += speed.y;
-        }
-        // 下キー
-        else if(Input.GetKey("down"))
-        {
-            Position.y -= speed.y;
-        }
-        // positionに代入
-        transform.position = Position;
+        //// 左キー
+        //if(Input.GetKey("left"))
+        //{
+        //    Position.x -= speed.x;
+        //}
+        //// 右キー
+        //else if (Input.GetKey("right"))
+        //{
+        //    Position.x += speed.x;
+        //}
+        //// 上キー
+        //else if(Input.GetKey("up"))
+        //{
+        //    Position.y += speed.y;
+        //}
+        //// 下キー
+        //else if(Input.GetKey("down"))
+        //{
+        //    Position.y -= speed.y;
+        //}
+        //// positionに代入
+        //transform.position = Position;
     }
 
     // 治療ポイント
@@ -107,7 +107,8 @@ public class PlayerController : MonoBehaviour {
             {
                 if (collision.gameObject.tag == "Enemy")
                 {
-                    //_enemy.GetEnemy().
+
+
                 }
 
                 // 親と一緒に座標を移動
